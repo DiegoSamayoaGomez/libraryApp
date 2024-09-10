@@ -31,12 +31,13 @@ addBookToLibrary("book4", "author4", 123, "Yes");
 
 //Loop through the array and display each book
 function showBook(myArr) {
-    myArr.forEach((books) => {
+    myArr.forEach((books, index) => {
         let title = books.title;
         let author = books.author;
         let pages = books.pages;
         let readStatus = books.read;
-        createCard(title, author, pages, readStatus);
+        let position = index;
+        createCard(title, author, pages, readStatus, position);
 
     });
     /*
@@ -49,13 +50,13 @@ function showBook(myArr) {
 
 }
 
-showBook(myLibrary);
 
 //Create a card element which will use the information of the Book Object
-function createCard(title, author, page, read) {
+function createCard(title, author, page, read, position) {
     //Create a Card element
     const cardElement = document.createElement("div");
     cardElement.classList.add("card");
+    cardElement.id = position;
     libraryElement.appendChild(cardElement);
 
     //Create HTML elements that show the book information in individual cards
@@ -68,28 +69,39 @@ function createCard(title, author, page, read) {
     authorCard.classList.add("authorCard");
     cardElement.appendChild(authorCard);
     authorCard.textContent = author;
-    
+
     const pagesCard = document.createElement("p");
     pagesCard.classList.add("pagesCard");
     cardElement.appendChild(pagesCard);
     pagesCard.textContent = "pages: " + page;
-    
+
     const statusReadCard = document.createElement("p");
     statusReadCard.classList.add("statusReadCard");
     cardElement.appendChild(statusReadCard);
     statusReadCard.textContent = read;
-    
 
+    //Create buttons for deleting and updating read status
+    const deleteCardElement = document.createElement("button");
+    deleteCardElement.classList.add("deleteCard");
+    cardElement.appendChild(deleteCardElement);
+    deleteCardElement.textContent = "Borrar";
+
+    deleteCardElement.addEventListener("click", () => {
+
+        constNewArray = myLibrary.splice(position, 1);
+        //        showBook(myLibrary);
+        document.getElementById(position).remove();
+
+    });
 
 
 }
 
+
+//IT SHOULD BE CALLED AFTER THE SUBMIT BUTTON WAS PRESSED
+showBook(myLibrary);
+
 addNewBookBtn.addEventListener("click", () => {
     alert("uwu");
 });
-/*
 
-const btn = document.querySelector("#btn");
-btn.addEventListener("click", () => {
-  alert("Hello World");
-});*/
