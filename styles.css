@@ -55,6 +55,10 @@ body {
     background-color: #ddeff0;
 }
 
+.authorCard, .statusReadCard, .pagesCard{
+    margin: 0;
+}
+
 .newCard {
     background-color: #bfe0e2;
     font-size: 100px;
@@ -62,4 +66,14 @@ body {
     justify-content: center;
     align-items: center;
     border: none;
+}
+
+.deleteCard {
+    padding: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    background-color: #438e96;
+    border: none;
+    border-radius: 5%;
 }
