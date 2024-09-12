@@ -1,6 +1,7 @@
 //Convert HTML elements into DOM elements
 const addNewBookBtn = document.querySelector(".newCard");
 const libraryElement = document.querySelector(".library");
+const showModal = document.getElementById("showModal");
 
 //Store of book objects
 const myLibrary = [];
@@ -86,12 +87,12 @@ function createCard(title, author, page, read, position) {
     const changeStatusReadElement = document.createElement("button");
     changeStatusReadElement.classList.add("changeReadStatus");
     cardElement.appendChild(changeStatusReadElement);
-    changeStatusReadElement.textContent = "Leído";
+    changeStatusReadElement.textContent = "Read";
 
     const deleteCardElement = document.createElement("button");
     deleteCardElement.classList.add("deleteCard");
     cardElement.appendChild(deleteCardElement);
-    deleteCardElement.textContent = "Borrar";
+    deleteCardElement.textContent = "Delete";
 
     deleteCardElement.addEventListener("click", () => {
 
@@ -104,11 +105,11 @@ function createCard(title, author, page, read, position) {
 
 }
 
-
 //IT SHOULD BE CALLED AFTER THE SUBMIT BUTTON WAS PRESSED
 showBook(myLibrary);
 
+// "+" button opens the <dialog> modally
 addNewBookBtn.addEventListener("click", () => {
-    alert("uwu");
+    showModal.showModal();
 });
 
