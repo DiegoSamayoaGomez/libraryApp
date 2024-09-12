@@ -93,3 +93,47 @@ body {
     width: 100%;
     margin: 5px 0px;
 }
+
+/*DIALOG FORM*/
+#showModal {
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.20) 0px 5px 15px;
+}
+
+#showModal>h2 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+
+    padding: 10px;
+}
+
+label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input[type=text], input[type=number] {
+    width: 100%;
+}
+
+#confirmBtn{
+    padding: 5px 0px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    background-color: #1c1c1c;
+    border: none;
+    border-radius: 5%;
+    width: 100%;
+
+}
