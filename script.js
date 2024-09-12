@@ -81,6 +81,13 @@ function createCard(title, author, page, read, position) {
     statusReadCard.textContent = read;
 
     //Create buttons for deleting and updating read status
+
+
+    const changeStatusReadElement = document.createElement("button");
+    changeStatusReadElement.classList.add("changeReadStatus");
+    cardElement.appendChild(changeStatusReadElement);
+    changeStatusReadElement.textContent = "Leído";
+
     const deleteCardElement = document.createElement("button");
     deleteCardElement.classList.add("deleteCard");
     cardElement.appendChild(deleteCardElement);
