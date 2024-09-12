@@ -55,7 +55,9 @@ body {
     background-color: #ddeff0;
 }
 
-.authorCard, .statusReadCard, .pagesCard{
+.authorCard,
+.statusReadCard,
+.pagesCard {
     margin: 0;
 }
 
@@ -73,7 +75,21 @@ body {
     font-size: large;
     font-weight: bold;
     color: white;
-    background-color: #438e96;
+    background-color: #B4435A;
     border: none;
     border-radius: 5%;
+    width: 100%;
+    margin: 5px 0px 0px 0px;
+}
+
+.changeReadStatus {
+    padding: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    background-color: #1c1c1c;
+    border: none;
+    border-radius: 5%;
+    width: 100%;
+    margin: 5px 0px;
 }
