@@ -20,6 +20,38 @@
     </div>
     <div class="content">
 
+        <dialog id="showModal">
+            <h2>Book Information</h2>
+            <p>Press ESC to close this without saving</p>
+
+            <form id="bookForm" action="#" method="post">
+
+                <ul>
+                    <li>
+                        <label for="titleBook">Title</label>
+                        <input type="text" id="titleBook" name="title" required>
+                    </li>
+                    <li>
+                        <label for="authorBook">Author</label>
+                        <input type="text" id="authorBook" name="author" required>
+                    </li>
+                    <li>
+                        <label for="numberOfPages">Pages</label>
+                        <input type="number" id="numberOfPages" name="pages" min="1">
+                    </li>
+                    <li>
+                        <label for="readStatus"><input type="checkbox" id="readStatus" name="statusRead" value="read">
+                            I have read this book
+
+                        </label>
+                    </li>
+                </ul>
+
+                <button id="confirmBtn" value="default">Confirm</button>
+
+            </form>
+        </dialog>
+
         <div class="library">
             <button class="newCard">+</button>
         </div>
