@@ -2,6 +2,9 @@
 const addNewBookBtn = document.querySelector(".newCard");
 const libraryElement = document.querySelector(".library");
 const showModal = document.getElementById("showModal");
+const bookForm = document.getElementById("bookForm");
+const submitterButton = document.querySelector("button[value=submit]")
+
 
 //Store of book objects
 const myLibrary = [];
@@ -21,14 +24,15 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, page, read) {
     const addBook = new Book(title, author, page, read);
     myLibrary.push(addBook);
+    return addBook;
 
 }
 
 //Examples
-addBookToLibrary("book1", "author1", 123, "no");
-addBookToLibrary("book2", "author2", 123, "yes");
-addBookToLibrary("book3", "author3", 123, "no");
-addBookToLibrary("book4", "author4", 123, "Yes");
+addBookToLibrary("book1", "author1", 123, false);
+addBookToLibrary("book2", "author2", 123, true);
+addBookToLibrary("book3", "author3", 123, false);
+addBookToLibrary("book4", "author4", 123, true);
 
 //Loop through the array and display each book
 function showBook(myArr) {
@@ -40,7 +44,9 @@ function showBook(myArr) {
         let position = index;
         createCard(title, author, pages, readStatus, position);
 
+
     });
+
     /*
     OLD VERSION
      for (let index = 0; index < myArr.length; index++) {
@@ -105,11 +111,47 @@ function createCard(title, author, page, read, position) {
 
 }
 
-//IT SHOULD BE CALLED AFTER THE SUBMIT BUTTON WAS PRESSED
-showBook(myLibrary);
+
+
 
 // "+" button opens the <dialog> modally
 addNewBookBtn.addEventListener("click", () => {
     showModal.showModal();
 });
 
+bookForm.addEventListener("submit", (event) => {
+    //Dont submit this form
+    event.preventDefault();
+    //Get data from form after submit button being pressed
+    const formData = new FormData(bookForm, submitterButton);
+    //Convert the data obtained from the form into an object
+    const formProps = Object.fromEntries(formData);
+
+    //OLD VERSION - Iterate over the form and print each value
+    /*
+  
+   for (const [key, value] of formData) {
+        console.log(`${key}: ${value}\n`);
+    }
+    */
+
+
+    //Store items from object into variables
+    let title = formProps.title;
+    let author = formProps.author;
+    let pages = formProps.pages;
+    let statusRead = formProps.statusRead;
+    //Handle checked or not checked checkbox
+    let readOrNot = statusRead === "on" ? true : false;
+    // Add the book and get the newly added book object
+    const newBook = addBookToLibrary(title, author, pages, readOrNot);
+
+    // Create a card for the new book
+    createCard(newBook.title, newBook.author, newBook.pages, newBook.read, myLibrary.length - 1);
+
+    showModal.close();
+
+});
+
+//IT SHOULD BE CALLED AFTER THE SUBMIT BUTTON WAS PRESSED
+showBook(myLibrary);
