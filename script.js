@@ -22,8 +22,8 @@ function Book(title, author, pages, read) {
 
 //Take user input and store the new book object into an array
 function addBookToLibrary(title, author, page, read) {
-    readOrNot = read === true ? "Read" : "Not read yet";
-    const addBook = new Book(title, author, page, readOrNot);
+
+    const addBook = new Book(title, author, page, read);
     myLibrary.push(addBook);
     return addBook;
 
@@ -37,6 +37,7 @@ addBookToLibrary("book4", "author4", 123, true);
 
 //Loop through the array and display each book
 function showBook(myArr) {
+
     myArr.forEach((books, index) => {
         let title = books.title;
         let author = books.author;
@@ -83,18 +84,30 @@ function createCard(title, author, page, read, position) {
     cardElement.appendChild(pagesCard);
     pagesCard.textContent = "pages: " + page;
 
+    readOrNot = read === true ? "Read" : "Not read yet";
     const statusReadCard = document.createElement("p");
     statusReadCard.classList.add("statusReadCard");
     cardElement.appendChild(statusReadCard);
-    statusReadCard.textContent = read;
+    statusReadCard.textContent = readOrNot;
+    //statusReadCard.textContent = myLibrary[position].read ? "Read" : "Not read yet";
 
     //Create buttons for deleting and updating read status
 
-
+    //Create a read or not read button and toggle between true and false of the property of the array
     const changeStatusReadElement = document.createElement("button");
     changeStatusReadElement.classList.add("changeReadStatus");
     cardElement.appendChild(changeStatusReadElement);
-    changeStatusReadElement.textContent = "Read";
+    //    changeStatusReadElement.textContent = "Read";
+    changeStatusReadElement.textContent = myLibrary[position].read ? "Mark as Not Read" : "Mark as Read";
+
+    changeStatusReadElement.addEventListener("click", () => {
+        // Toggle the read status
+        myLibrary[position].read = !myLibrary[position].read;
+
+        // Update the status text and button text
+        statusReadCard.textContent = myLibrary[position].read ? "Read" : "Not read yet";
+        changeStatusReadElement.textContent = myLibrary[position].read ? "Mark as Not Read" : "Mark as Read";
+    });
 
     const deleteCardElement = document.createElement("button");
     deleteCardElement.classList.add("deleteCard");
