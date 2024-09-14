@@ -22,7 +22,8 @@ function Book(title, author, pages, read) {
 
 //Take user input and store the new book object into an array
 function addBookToLibrary(title, author, page, read) {
-    const addBook = new Book(title, author, page, read);
+    readOrNot = read === true ? "Read" : "Not read yet";
+    const addBook = new Book(title, author, page, readOrNot);
     myLibrary.push(addBook);
     return addBook;
 
