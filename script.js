@@ -150,6 +150,7 @@ bookForm.addEventListener("submit", (event) => {
     */
 
 
+
     //Store items from object into variables
     let title = formProps.title;
     let author = formProps.author;
@@ -163,7 +164,12 @@ bookForm.addEventListener("submit", (event) => {
     // Create a card for the new book
     createCard(newBook.title, newBook.author, newBook.pages, newBook.read, myLibrary.length - 1);
 
+    //Clear form after pressing the confirm button
+    document.getElementById("bookForm").reset();
+
+    //Close the modal after pressing the confirm button
     showModal.close();
+
 
 });
 
