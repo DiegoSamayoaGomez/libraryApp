@@ -30,10 +30,10 @@ function addBookToLibrary(title, author, page, read) {
 }
 
 //Examples
-addBookToLibrary("book1", "author1", 123, false);
-addBookToLibrary("book2", "author2", 123, true);
-addBookToLibrary("book3", "author3", 123, false);
-addBookToLibrary("book4", "author4", 123, true);
+addBookToLibrary("The Twenty-One", "Elizabeth Rusch", 272, false);
+addBookToLibrary("Las Change Books", "Veronica Roth", 368, true);
+addBookToLibrary("The Great Design", "Stephen Hawking", 200, false);
+addBookToLibrary("The Why Not 100", "Multiple Authors", 300, true);
 
 //Loop through the array and display each book
 function showBook(myArr) {
@@ -82,7 +82,7 @@ function createCard(title, author, page, read, position) {
     const pagesCard = document.createElement("p");
     pagesCard.classList.add("pagesCard");
     cardElement.appendChild(pagesCard);
-    pagesCard.textContent = "pages: " + page;
+    pagesCard.textContent = "Pages: " + page;
 
     readOrNot = read === true ? "Read" : "Not read yet";
     const statusReadCard = document.createElement("p");
