@@ -9,6 +9,19 @@ const submitterButton = document.querySelector("button[value=submit]")
 //Store of book objects
 const myLibrary = [];
 
+
+//Class 
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+}
+
+/*
 //Object constructor
 function Book(title, author, pages, read) {
     this.title = title;
@@ -19,6 +32,7 @@ function Book(title, author, pages, read) {
         return `${title} by ${author}, ${pages} pages, ${read}` //Its better to use return instead of log the info
     }
 }
+*/
 
 //Take user input and store the new book object into an array
 function addBookToLibrary(title, author, page, read) {
