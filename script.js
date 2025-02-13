@@ -109,6 +109,16 @@ function createCard(title, author, page, read, position) {
     ? "Mark as Not Read"
     : "Mark as Read";
 
+  //Update class name of the button based if it has been read or not
+  function toggleReadClass() {
+    if (myLibrary[position].read) {
+      changeStatusReadElement.classList = "changeReadStatus read";
+    } else {
+      changeStatusReadElement.classList = "changeReadStatus notRead";
+    }
+  }
+  toggleReadClass();
+
   changeStatusReadElement.addEventListener("click", () => {
     // Toggle the read status
     myLibrary[position].read = !myLibrary[position].read;
@@ -120,6 +130,9 @@ function createCard(title, author, page, read, position) {
     changeStatusReadElement.textContent = myLibrary[position].read
       ? "Mark as Not Read"
       : "Mark as Read";
+
+    //Update class name of the button based if it has been read or not
+    toggleReadClass();
   });
 
   const deleteCardElement = document.createElement("button");
